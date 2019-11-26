@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reinitialize.c                                  :+:      :+:    :+:   */
+/*   ft_parse_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 10:56:11 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 17:14:24 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/26 15:01:55 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/11/26 17:19:19 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_reinitialize(t_struct *tab)
+int		ft_parse_number(t_struct *tab)
 {
-	tab->precision = -1;
-	tab->width = -1;
-	tab->conv[0] = 0;
-	tab->conv[1] = 0;
-	tab->conv[2] = 0;
-	tab->conv[3] = 0;
-	tab->conv[4] = 0;
-	tab->conv[5] = 0;
-	tab->conv[6] = 0;
-	tab->conv[7] = 0;
-	tab->conv[8] = 0;
-	tab->flag[0] = 0;
-	tab->flag[1] = 0;
-	tab->flag[2] = 0;
-	tab->flag[3] = 0;
+	int nb;
+
+	nb = 0;
+	while (tab->format[tab->i] <= '9' && tab->format[tab->i] >= '0')
+	{
+		nb *= 10;
+		nb += tab->format[tab->i] - '0';
+		tab->i++;
+	}
+	if (nb == 0)
+		return (-1);
+	return (nb);
 }

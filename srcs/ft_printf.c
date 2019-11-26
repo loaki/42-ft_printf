@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 09:34:22 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/25 12:46:45 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:30:51 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		ft_printf(const char *format, ...)
 	if (format)
 	{
 		va_start(tab->arg, format);
-		tab->len = ft_parser(tab);
+		if ((tab->len = ft_parser(tab)) == -1)
+			return (-1);
 		va_end(tab->arg);
 	}
 	free(tab);

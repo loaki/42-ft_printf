@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reinitialize.c                                  :+:      :+:    :+:   */
+/*   ft_display_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 10:56:11 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 17:14:24 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/26 15:43:30 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/11/26 17:35:12 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_reinitialize(t_struct *tab)
+int		ft_display(t_struct *tab)
 {
-	tab->precision = -1;
-	tab->width = -1;
-	tab->conv[0] = 0;
-	tab->conv[1] = 0;
-	tab->conv[2] = 0;
-	tab->conv[3] = 0;
-	tab->conv[4] = 0;
-	tab->conv[5] = 0;
-	tab->conv[6] = 0;
-	tab->conv[7] = 0;
-	tab->conv[8] = 0;
-	tab->flag[0] = 0;
-	tab->flag[1] = 0;
-	tab->flag[2] = 0;
-	tab->flag[3] = 0;
+	printf("\n----display----\n");
+	printf("format = %s\n", tab->format);
+	printf("conv = %c\n", tab->format[tab->i]);
+	printf("width = %i\n", tab->width);
+	printf("precision = %i\n", tab->precision);
+	printf("flag =\n- : %c\n0 : %c\n. : %c\n* : %c\n", 
+	tab->flag[0], tab->flag[1], tab->flag[2], tab->flag[3]);
+	return (0);
 }

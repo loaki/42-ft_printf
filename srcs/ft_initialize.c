@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 09:38:20 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/25 12:46:51 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:43:53 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	ft_initialize(t_struct *tab)
 	tab->i = 0;
 	tab->conv_mask = "cspdiuxX%";
 	tab->flag_mask = "-0.*";
+
 }

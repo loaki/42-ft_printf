@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 09:37:22 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/25 12:46:53 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:45:22 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int		ft_parser(t_struct *tab)
 		if (tab->format[tab->i] == '%')
 		{
 			ft_reinitialize(tab);
-			ft_treat(tab);
+			if (ft_treat(tab) == -1)
+				return (-1);
 		}
 		else
 		{

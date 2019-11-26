@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 10:41:56 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/25 12:46:56 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:14:36 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,27 @@
 
 void	ft_parse_flag(t_struct *tab)
 {
-	int j;
-
-	j = 0;
-	while (tab->flag_mask[j])
+	if (tab->format[tab->i] == '-')
 	{
-		while (tab->flag_mask[j] == tab->format[tab->i])
-		{
-			while (tab->format[tab->i] == '-' && tab->i++)
-				tab->flag[0] = '-';
-			while (tab->format[tab->i] == '0' && tab->i++)
-				tab->flag[1] = '0';
-			while (tab->format[tab->i] == '.' && tab->i++)
-				tab->flag[2] = '.';
-			while (tab->format[tab->i] == '*' && tab->i++)
-				tab->flag[3] = '*';
-			j = 0;
-		}
-		j++;
+		tab->flag[0] = '-';
+		tab->i++;
+		return ;
+	}
+	if (tab->format[tab->i] == '0')
+	{
+		tab->flag[1] = '0';
+		tab->i++;
+		return ;
+	}
+	if (tab->format[tab->i] == '.')
+	{
+		tab->flag[2] = '.';
+		tab->i++;
+		return ;
+	}
+	if (tab->format[tab->i] == '*')
+	{
+		tab->flag[3] = '*';
+		return ;
 	}
 }
