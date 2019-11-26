@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 10:31:38 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 17:45:18 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 18:58:45 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ int		ft_treat(t_struct *tab)
 		tab->format[tab->i] != 's' && tab->format[tab->i] != 'p' &&
 		tab->format[tab->i] != 'd' && tab->format[tab->i] != 'i' &&
 		tab->format[tab->i] != 'u' && tab->format[tab->i] != 'x' &&
-		tab->format[tab->i] != 'X'&& tab->format[tab->i] != '%')
+		tab->format[tab->i] != 'X' && tab->format[tab->i] != '%')
 	{
 		ft_parse_flag(tab);
 		ft_parse_precision(tab);
 		ft_parse_width(tab);
 	}
-	ft_display(tab);//display test
-	return (0);
+//	ft_display(tab);//display test
 	return (ft_switch(tab));
 }

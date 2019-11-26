@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_display_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 09:37:22 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 18:36:42 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/26 17:52:10 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/11/26 19:00:00 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_parser(t_struct *tab)
+int		ft_display_c(t_struct *tab)
 {
-	while (tab->format[tab->i])
+	char c;
+
+	c = (char)va_arg(tab->arg, unsigned long int);
+	if (tab->precision != -1 || tab->flag[1] == '0')
+		return (-1);
+	while (tab->width > 1 && tab->flag[0] != '-')
 	{
-		if (tab->format[tab->i] == '%')
-		{
-			ft_reinitialize(tab);
-			if (ft_treat(tab) == -1)
-				return (-1);
-		}
-		else
-		{
-			write(1, &tab->format[tab->i], 1);
-			tab->len++;
-		}
-		tab->i++;
+		write(1, " ", 1);
+		tab->width--;
+		tab->len++;
 	}
-	return (tab->len);
+	write(1, &c, 1);
+	tab->len++;
+	if (tab->width < 0)
+		tab->width *= -1;
+	while (tab->width > 1)
+	{
+		write(1, " ", 1);
+		tab->width--;
+		tab->len++;
+	}
+	return (0);
 }

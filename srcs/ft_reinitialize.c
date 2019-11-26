@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 10:56:11 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 17:14:24 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 18:07:29 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_reinitialize(t_struct *tab)
 {
 	tab->precision = -1;
-	tab->width = -1;
+	tab->width = 0;
 	tab->conv[0] = 0;
 	tab->conv[1] = 0;
 	tab->conv[2] = 0;

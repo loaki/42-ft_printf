@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:13:13 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 17:24:17 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/26 18:08:19 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_parse_width(t_struct *tab)
 {
-	if (tab->width != -1)
+	if (tab->width != 0)
 		return ;
 	if (tab->format[tab->i] != '*')
 	{
