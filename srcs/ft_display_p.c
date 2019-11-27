@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:27:46 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/27 16:14:01 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:15:42 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ int			ft_display_p(t_struct *tab)
 		tab->width--;
 		tab->len++;
 	}
-	ft_putstr(str);
-	tab->len++;
+	ft_putstr(tab, str);
 	if (tab->width < 0)
 		tab->width *= -1;
 	while (tab->width > ft_strlen(str))
