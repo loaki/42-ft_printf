@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:46 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/27 18:45:28 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:52:39 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int			ft_display_s(t_struct *tab)
 		tab->width *= -1;
 	while (tab->width > ft_strlen(str))
 	{
-		printf("wtf??\n");
 		write(1, " ", 1);
 		tab->width--;
 		tab->len++;
