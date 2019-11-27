@@ -6,27 +6,11 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 13:42:46 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/27 18:52:39 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:22:36 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	ft_strcmp(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (-1);
-		i++;
-	}
-	if (s1[i] != s2[i])
-		return (-1);
-	return (0);
-}
 
 int			ft_display_s(t_struct *tab)
 {
