@@ -28,12 +28,13 @@ void	ft_rescmp(char * s1, int len)
 
 	fd = open("out.txt", O_RDONLY);
 	i = 0;
-	while (i <= (len + 1))
+	while (i <= (len))
 	{
 		s2[i] = 0;
 		i++;
 	}
 	read(fd, s2, len);
+	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("s1 =%s\ns2 =%s\n", s1, s2); //remove comments to see the results
 	if (!(ft_strcmp(s1, s2)))
 	{
 		freopen ("/dev/tty", "a", stdout); printf("\033[1;32m"); printf("OK\n");
@@ -70,27 +71,54 @@ void	ft_test(char *str, void *conv, char c)
 int main()
 {
 	char *str = "ca marche !";
+	char *str2 = "";
+	char *str3 = NULL;
 	char c = 'z';
+	char c2 = 0;
 	int i = 42;
 	int i2 = 0;
 	int i3 = -42;
 	int *p = &i;
+	int *p2 = NULL;
 	unsigned int u = 394;
 
+	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("-----basic tests-----\n");
 	ft_test("%s", str, 's');
+	ft_test("%s", str2, 's');
+	ft_test("%s", str3, 's');
 	ft_test("%c", c, 'c');
+	ft_test("%c", c2, 'c');
 	ft_test("%p", p, 'p');
+	ft_test("%p", p2, 'p');
 	ft_test("%i", i, 'i');
 	ft_test("%d", i2, 'd');
 	ft_test("%i", i3, 'i');
 	ft_test("%x", i, 'x');
+	ft_test("%x", i2, 'x');
+	ft_test("%x", i3, 'x');
 	ft_test("%X", i, 'X');
+	ft_test("%X", i2, 'X');
+	ft_test("%X", i3, 'X');
 	ft_test("%u", u, 'u');
-
+	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("-----advanced tests-----\n");
 	ft_test("%05i", i, 'i');
 	ft_test("%.-5i", i, 'i');
 	ft_test("%.-5i", i, 'i');
+	ft_test("%-9c", c, 'c');
+	ft_test("%9c", c, 'c');
+	ft_test("%9s", str, 's');
+	ft_test("%-9s", str, 's');
+	ft_test("%.9s", str, 's');
+	ft_test("%9s", str2, 's');
+	ft_test("%-9s", str2, 's');
+	ft_test("%.9s", str2, 's');
+	ft_test("%9s", str3, 's');
+	ft_test("%-9s", str3, 's');
+	ft_test("%.9s", str3, 's');
+	ft_test("%-21p", p, 'p');
+	ft_test("%21p", p, 'p');
+	ft_test("%21p", p2, 'p');
+	ft_test("%-21p", p2, 'p');
 
-//	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("%-5i", i);
 	return (0);
 }

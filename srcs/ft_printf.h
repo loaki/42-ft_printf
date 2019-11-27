@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 09:39:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/26 19:00:02 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:07:55 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,14 @@ void			ft_parse_precision(t_struct *tab);
 int				ft_parse_number(t_struct *tab);
 void			ft_parse_width(t_struct *tab);
 int				ft_switch(t_struct *tab);
+
+void			ft_putstr(char *str);
+int				ft_strlen(char *str);
+
 int				ft_display_c(t_struct *tab);
+int				ft_display_s(t_struct *tab);
+int				ft_display_p(t_struct *tab);
+
 
 int				ft_display(t_struct *tab);/*a retirer*/
 
