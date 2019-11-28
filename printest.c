@@ -86,7 +86,7 @@ int main()
 	int *numtest = &num;
 	char *str = "ca marche !"; char *str2 = ""; char *str3 = NULL;
 	char c = 'z'; char c2 = 0;
-	int i = 42;	int i2 = 0; int i3 = -42; int i4 = =-2147483648; int i5 = =2147483647;
+	int i = 42;	int i2 = 0; int i3 = -42; int i4 = -2147483648; int i5 = 2147483647;
 	int *p = &i; int *p2 = NULL;
 	unsigned int u = 394;
 
