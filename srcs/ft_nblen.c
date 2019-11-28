@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_nblen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 16:05:41 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/28 21:53:44 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/28 22:49:50 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/11/28 22:52:11 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(t_struct *tab, char *str)
+int		ft_nblen(int nb)
 {
-	int i;
+	long int i;
 
 	i = 0;
-	if (tab->precision < 0)
-		while (str[i])
-		{
-			write(1, &str[i], 1);
-			tab->len++;
-			i++;
-		}
-	else
-		while (str[i] != 0 && tab->precision > 0)
-		{
-			write(1, &str[i], 1);
-			tab->len++;
-			tab->precision--;
-			i++;
-		}
+	if (nb <= 0)
+		i++;
+	while (nb != 0)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }

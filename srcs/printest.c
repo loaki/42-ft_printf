@@ -84,17 +84,18 @@ int main()
 {
 	int num = 0;
 	int *numtest = &num;
-	char *str = "ca marche !";
-	char *str2 = "";
-	char *str3 = NULL;
-	char c = 'z';
-	char c2 = 0;
-	int i = 42;
-	int i2 = 0;
-	int i3 = -42;
-	int *p = &i;
-	int *p2 = NULL;
+	char *str = "ca marche !"; char *str2 = ""; char *str3 = NULL;
+	char c = 'z'; char c2 = 0;
+	int i = 42;	int i2 = 0; int i3 = -42; int i4 = =-2147483648; int i5 = =2147483647;
+	int *p = &i; int *p2 = NULL;
 	unsigned int u = 394;
+
+
+
+
+
+
+
 
 	freopen ("/dev/tty", "a", stdout); printf("\033[0;97m"); printf("-----basic tests-----\n");
 	ft_test("%s", str, 's', numtest);
@@ -113,9 +114,7 @@ int main()
 	ft_test("%X", i, 'X', numtest);
 	ft_test("%X", i2, 'X', numtest);
 	ft_test("%X", i3, 'X', numtest);
-	ft_test("%u", u, 'u', numtest);
-	freopen ("/dev/tty", "a", stdout); printf("\033[0;97m"); printf("-----advanced tests-----\n");
-	ft_test("%05i", i, 'i', numtest);
+	ft_test("%u", u, 'u', numtest);	freopen ("/dev/tty", "a", stdout); printf("\033[0;97m"); printf("-----advanced tests-----\n");
 	ft_test("%-9c", c, 'c', numtest);
 	ft_test("%9c", c, 'c', numtest);
 	ft_test("%9s", str, 's', numtest);
@@ -131,6 +130,23 @@ int main()
 	ft_test("%21p", p, 'p', numtest);
 	ft_test("%21p", p2, 'p', numtest);
 	ft_test("%-21p", p2, 'p', numtest);
+	ft_test("%i", i4, 'i', numtest);
+	ft_test("%i", i5, 'i', numtest);
+	ft_test("%30i", i4, 'i', numtest);
+	ft_test("%6i", i4, 'i', numtest);
+	ft_test("%030i", i4, 'i', numtest);
+	ft_test("%06i", i4, 'i', numtest);
+	ft_test("%-30i", i4, 'i', numtest);
+	ft_test("%-6i", i4, 'i', numtest);
+	ft_test("%30.6i", i4, 'i', numtest);
+	ft_test("%30.20i", i4, 'i', numtest);
+	ft_test("%30.40i", i4, 'i', numtest);
+	ft_test("%-30.6i", i4, 'i', numtest);
+	ft_test("%-30.20i", i4, 'i', numtest);
+	ft_test("%-30.40i", i4, 'i', numtest);
+	ft_test("%030.6i", i4, 'i', numtest);
+	ft_test("%030.20i", i4, 'i', numtest);
+	ft_test("%030.40i", i4, 'i', numtest);
 
 	return (0);
 }

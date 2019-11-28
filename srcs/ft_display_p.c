@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:27:46 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/27 18:15:42 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/28 20:40:24 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,16 @@ static char	*ft_strjoin(char *str)
 	i = 0;
 	if (!(ret = (char *)malloc(15)))
 		return (NULL);
-	while (str[i] == 0)
+	while (str[i] == '0')
 		i++;
 	ret[0] = '0';
 	ret[1] = 'x';
-	ret[2] = '7';
-	ret[3] = 'f';
-	ret[4] = 'f';
 	while (str[i])
 	{
-		ret[i + 5] = str[i];
+		ret[i + 2] = str[i];
 		i++;
 	}
-	ret[i + 5] = 0;
+	ret[i + 2] = 0;
 	return (ret);
 }
 
@@ -56,15 +53,15 @@ static char	*ft_strhexa(t_struct *tab)
 {
 	long int	p;
 	char		*base;
-	char		str[10];
+	char		str[13];
 	int			i;
 
 	p = (long int)va_arg(tab->arg, unsigned long int);
 	if (!p)
 		return ("0x0");
 	base = "0123456789abcdef";
-	i = 8;
-	str[9] = 0;
+	i = 11;
+	str[12] = 0;
 	while (i >= 0 || (p / 16) > 0)
 	{
 		str[i] = base[p % 16];
