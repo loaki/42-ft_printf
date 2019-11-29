@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 17:25:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/28 21:32:26 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/29 18:46:19 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		ft_switch(t_struct *tab)
 		return (ft_display_p(tab));//afer
 	if (tab->format[tab->i] == 'd' || tab->format[tab->i] == 'i')
 		return (ft_display_i(tab));//afer
-/*	if (tab->format[tab->i] == 'u')
+	if (tab->format[tab->i] == 'u')
 		return (ft_display_u(tab));//afer
-	if (tab->format[tab->i] == 'x')
+/*	if (tab->format[tab->i] == 'x')
 		return (ft_display_x(tab));//afer
 	if (tab->format[tab->i] == 'X')
 		return (ft_display_X(tab));//afer

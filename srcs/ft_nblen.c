@@ -6,15 +6,15 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 22:49:50 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/28 22:52:11 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/11/29 18:57:25 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_nblen(int nb)
+int		ft_nblen(long long int nb)
 {
-	long int i;
+	long long int i;
 
 	i = 0;
 	if (nb <= 0)

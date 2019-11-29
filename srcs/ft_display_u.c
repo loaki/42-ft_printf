@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_i.c                                     :+:      :+:    :+:   */
+/*   ft_display_u.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 20:43:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/29 18:55:20 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/29 13:31:15 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/11/29 20:29:36 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,6 @@ static void		ft_truc(t_struct *tab, char *str)
 	int i;
 
 	i = 0;
-	if (str[0] == '-' && tab->flag[1] == '0' && (tab->width < tab->precision ||
-		tab->flag[2] != '.'))
-	{
-		write(1, "-", 1);
-		tab->len++;
-		i++;
-	}
 	while (tab->width > ft_strlen(str))
 	{
 		if (tab->flag[1] == '0' && (tab->width < tab->precision ||
@@ -81,28 +74,23 @@ static void		ft_width(t_struct *tab, char *str)
 		ft_putnbr(tab, str, 0);
 }
 
-int				ft_display_i(t_struct *tab)
+int				ft_display_u(t_struct *tab)
 {
-	int				nb;
+	unsigned int	nb;
 	int				i;
-	unsigned int	unb;
 	char			*str;
 
 	i = tab->precision;
-	nb = (int)va_arg(tab->arg, unsigned long int);
+	nb = (unsigned int)va_arg(tab->arg, unsigned long int);
 	if (i < ft_nblen(nb))
 		i = ft_nblen(nb);
-	if (nb < 0 && i > ft_nblen(nb))
-		i++;
 	if (!(str = malloc(i + 1)))
 		return (-1);
 	ft_bzero(str, i);
-	str[0] = (nb < 0 ? '-' : '0');
-	unb = (nb < 0 ? -nb : nb);
-	while (unb != 0)
+	while (nb != 0)
 	{
-		str[i - 1] = unb % 10 + '0';
-		unb /= 10;
+		str[i - 1] = nb % 10 + '0';
+		nb /= 10;
 		i--;
 	}
 	ft_width(tab, str);
