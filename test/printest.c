@@ -34,7 +34,7 @@ void	ft_rescmp(char * s1, int len, int *numtest, int *success)
 		i++;
 	}
 	read(fd, s2, len);
-//	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("\ns1 =%s\ns2 =%s\n", s1, s2); //remove comments to see the results
+	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("\ns1 =%s\ns2 =%s\n", s1, s2); //remove comments to see results
 	if (!(ft_strcmp(s1, s2)))
 	{
 		*success += 1;
@@ -63,16 +63,18 @@ void	ft_test(char *str, void *conv, char c, int *numtest, int *success)
 		(int)conv;
 	if (c == 'u')
 		(unsigned int)conv;
+	if (c == '%')
+		(char)conv;
 	*numtest += 1;
 	lenft = ft_printf(str, conv);
 	len = snprintf(NULL, 0, str, conv);
 	s1 = malloc(len + 1);
 	snprintf(s1, len + 1, str, conv);
 	ft_rescmp(s1, len, numtest, success);
-//	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("len f =%i\nlen t =%i\n", lenft, len); //remove comments to see length
+	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("len f =%i\nlen t =%i\n", lenft, len); //remove comments to see length
 	if (lenft != len)
 	{
-		freopen ("/dev/tty", "a", stdout); printf("\033[1;31m"); printf("return error\n");
+		freopen ("/dev/tty", "a", stdout); printf("\033[1;31m"); printf("return KO\n");
 	}
 	else
 		*success += 1;
@@ -95,9 +97,8 @@ int main()
 
 
 
-
-
 	freopen ("/dev/tty", "a", stdout); printf("\033[0;97m"); printf("-----basic tests-----\n");
+	ft_test("salut %s ca va ?", str, 's', numtest, success);
 	ft_test("%s", str, 's', numtest, success);
 	ft_test("%s", str2, 's', numtest, success);
 	ft_test("%s", str3, 's', numtest, success);
@@ -106,15 +107,28 @@ int main()
 	ft_test("%p", p, 'p', numtest, success);
 	ft_test("%p", p2, 'p', numtest, success);
 	ft_test("%i", i, 'i', numtest, success);
-	ft_test("%d", i2, 'd', numtest, success);
+	ft_test("%d", i2, 'i', numtest, success);
 	ft_test("%i", i3, 'i', numtest, success);
-	ft_test("%x", i, 'x', numtest, success);
-	ft_test("%x", i2, 'x', numtest, success);
-	ft_test("%x", i3, 'x', numtest, success);
-	ft_test("%X", i, 'X', numtest, success);
-	ft_test("%X", i2, 'X', numtest, success);
-	ft_test("%X", i3, 'X', numtest, success);
-	ft_test("%u", u, 'u', numtest, success);	freopen ("/dev/tty", "a", stdout); printf("\033[0;97m"); printf("-----advanced tests-----\n");
+	ft_test("%i", i4, 'i', numtest, success);
+	ft_test("%i", i5, 'i', numtest, success);
+	ft_test("%i", i, 'd', numtest, success);
+	ft_test("%d", i2, 'd', numtest, success);
+	ft_test("%i", i3, 'd', numtest, success);
+	ft_test("%i", i4, 'd', numtest, success);
+	ft_test("%i", i5, 'd', numtest, success);
+	ft_test("%x", u, 'x', numtest, success);
+	ft_test("%x", u2, 'x', numtest, success);
+	ft_test("%x", u3, 'x', numtest, success);
+	ft_test("%x", u4, 'x', numtest, success);
+	ft_test("%X", u, 'X', numtest, success);
+	ft_test("%X", u2, 'X', numtest, success);
+	ft_test("%X", u3, 'X', numtest, success);
+	ft_test("%X", u4, 'X', numtest, success);
+	ft_test("%u", u, 'u', numtest, success);	
+	ft_test("%u", u2, 'u', numtest, success);	
+	ft_test("%u", u3, 'u', numtest, success);	
+	ft_test("%u", u4, 'u', numtest, success);
+	ft_test("%50%", c, '%', numtest, success); freopen ("/dev/tty", "a", stdout); printf("\033[0;97m"); printf("-----advanced tests-----\n");
 	ft_test("%-9c", c, 'c', numtest, success);
 	ft_test("%9c", c, 'c', numtest, success);
 	ft_test("%9s", str, 's', numtest, success);
@@ -130,8 +144,6 @@ int main()
 	ft_test("%21p", p, 'p', numtest, success);
 	ft_test("%21p", p2, 'p', numtest, success);
 	ft_test("%-21p", p2, 'p', numtest, success);
-	ft_test("%i", i4, 'i', numtest, success);
-	ft_test("%i", i5, 'i', numtest, success);
 	ft_test("%30i", i4, 'i', numtest, success);
 	ft_test("%6i", i4, 'i', numtest, success);
 	ft_test("%030i", i4, 'i', numtest, success);
@@ -163,10 +175,6 @@ int main()
 	ft_test("%0-50.30u", i2, 'i', numtest, success);
 	ft_test("%0-50.30u", i3, 'i', numtest, success);
 	ft_test("%0-50.30u", i4, 'i', numtest, success);
-	ft_test("%u", u, 'u', numtest, success);
-	ft_test("%u", u2, 'u', numtest, success);
-	ft_test("%u", u3, 'u', numtest, success);
-	ft_test("%u", u4, 'u', numtest, success);
 	ft_test("%50u", u, 'u', numtest, success);
 	ft_test("%50u", u2, 'u', numtest, success);
 	ft_test("%50u", u3, 'u', numtest, success);
@@ -231,6 +239,23 @@ int main()
 	ft_test("%0-50.30u", u2, 'u', numtest, success);
 	ft_test("%0-50.30u", u3, 'u', numtest, success);
 	ft_test("%0-50.30u", u4, 'u', numtest, success);
+	ft_test("%50%", c, '%', numtest, success);
+	ft_test("%2%", c, '%', numtest, success);
+	ft_test("%-50%", c, '%', numtest, success);
+	ft_test("%-2%", c, '%', numtest, success);
+	ft_test("%050%", c, '%', numtest, success);
+	ft_test("%02%", c, '%', numtest, success);
+	ft_test("%.50%", c, '%', numtest, success);
+	ft_test("%.2%", c, '%', numtest, success);
+	ft_test("%50.2%", c, '%', numtest, success);
+	ft_test("%2.50%", c, '%', numtest, success);
+	ft_test("%050.2%", c, '%', numtest, success);
+	ft_test("%02.50%", c, '%', numtest, success);
+	ft_test("%0-2.50%", c, '%', numtest, success);
+	ft_test("%0-2.5%", c, '%', numtest, success);
+	ft_test("%0-50.2%", c, '%', numtest, success);
+	ft_test("%0-50.30%", c, '%', numtest, success);
+
 	if (*success != (*numtest * 2))
 	{
 		printf("\033[1;31m"); printf("%i/%i\n", *success, (*numtest * 2));

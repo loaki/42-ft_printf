@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_i.c                                     :+:      :+:    :+:   */
+/*   ft_display_x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 20:43:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/01 16:28:26 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/12/01 16:28:54 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,47 @@ static void		ft_width(t_struct *tab, char *str)
 		ft_putnbr(tab, str, 0);
 }
 
-int				ft_display_i(t_struct *tab)
+static void		ft_precision(t_struct *tab, char *str, int s)
 {
-	int				nb;
-	int				i;
-	unsigned int	unb;
-	char			*str;
+	int i;
+	int hexlen;
+	int preci;
 
-	i = tab->precision;
-	nb = (int)va_arg(tab->arg, unsigned long int);
-	if (i < ft_nblen(nb))
-		i = ft_nblen(nb);
-	if (nb < 0 && i > ft_nblen(nb))
-		i++;
-	if (!(str = malloc(i + 1)))
-		return (-1);
-	ft_bzero(str, i);
-	str[0] = (nb < 0 ? '-' : '0');
-	unb = (nb < 0 ? -nb : nb);
-	while (unb != 0)
+	hexlen = ft_strlen(str) - s;
+	preci = (tab->precision < hexlen ? hexlen : tab->precision);
+	i = 0;
+	while (i < (preci))
 	{
-		str[i - 1] = unb % 10 + '0';
-		unb /= 10;
+		str[i] = str[ft_strlen(str) - (preci - i)];
+		i++;
+	}
+	str[i] = 0;
+}
+
+int				ft_display_x(t_struct *tab)
+{
+	unsigned int	nb;
+	char			*str;
+	char			*base;
+	int				i;
+
+	base = (tab->format[tab->i] == 'x' ? "0123456789abcdef"
+	: "0123456789ABCDEF");
+	tab->precision = (tab->precision < 0 ? 0 : tab->precision);
+	nb = (unsigned int)va_arg(tab->arg, unsigned long int);
+	if (!(str = malloc(tab->precision + 9)))
+		return (-1);
+	i = tab->precision + 9;
+	ft_bzero(str, i - 1);
+	if (nb == 0 && tab->precision < 1)
+		tab->precision = 1;
+	while (nb != 0 || (nb / 16) > 0)
+	{
+		str[i] = base[nb % 16];
+		nb /= 16;
 		i--;
 	}
+	ft_precision(tab, str, (i + 1));
 	ft_width(tab, str);
 	free(str);
 	return (0);

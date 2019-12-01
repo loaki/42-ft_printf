@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 16:07:11 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/29 23:15:00 by jfeuilla         ###   ########.fr       */
+/*   Created: 2019/11/29 23:19:33 by jfeuilla          #+#    #+#             */
+/*   Updated: 2019/11/29 23:20:13 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_strlen(char *str)
+void			ft_bzero(char *str, int len)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	while (i != len)
+	{
+		str[i] = '0';
 		i++;
-	return (i);
+	}
+	str[i] = 0;
 }

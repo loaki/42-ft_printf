@@ -6,26 +6,13 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 13:31:15 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/29 20:29:36 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/01 16:28:40 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void			ft_bzero(char *str, int len)
-{
-	int i;
-
-	i = 0;
-	while (i != len)
-	{
-		str[i] = '0';
-		i++;
-	}
-	str[i] = 0;
-}
-
-static void			ft_putnbr(t_struct *tab, char *str, int i)
+static void		ft_putnbr(t_struct *tab, char *str, int i)
 {
 	while (str[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 09:39:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/29 18:59:52 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/01 16:27:54 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h> /*a retirer*/
 
 typedef	struct	s_struct
 {
@@ -46,13 +45,14 @@ int				ft_switch(t_struct *tab);
 void			ft_putstr(t_struct *tab, char *str);
 int				ft_strlen(char *str);
 int				ft_nblen(long long int nb);
+void			ft_bzero(char *str, int len);
 
 int				ft_display_c(t_struct *tab);
 int				ft_display_s(t_struct *tab);
 int				ft_display_p(t_struct *tab);
 int				ft_display_i(t_struct *tab);
 int				ft_display_u(t_struct *tab);
-
-void				ft_display(t_struct *tab);/*a retirer*/
+int				ft_display_x(t_struct *tab);
+int				ft_display_pc(t_struct *tab);
 
 #endif
