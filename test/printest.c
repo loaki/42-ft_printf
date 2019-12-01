@@ -34,7 +34,7 @@ void	ft_rescmp(char * s1, int len, int *numtest, int *success)
 		i++;
 	}
 	read(fd, s2, len);
-	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("\ns1 =%s\ns2 =%s\n", s1, s2); //remove comments to see results
+//	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("\ns1 =%s\ns2 =%s\n", s1, s2); //remove comments to see results
 	if (!(ft_strcmp(s1, s2)))
 	{
 		*success += 1;
@@ -71,7 +71,7 @@ void	ft_test(char *str, void *conv, char c, int *numtest, int *success)
 	s1 = malloc(len + 1);
 	snprintf(s1, len + 1, str, conv);
 	ft_rescmp(s1, len, numtest, success);
-	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("len f =%i\nlen t =%i\n", lenft, len); //remove comments to see length
+//	freopen ("/dev/tty", "a", stdout); printf("\033[0m"); printf("len f =%i\nlen t =%i\n", lenft, len); //remove comments to see length
 	if (lenft != len)
 	{
 		freopen ("/dev/tty", "a", stdout); printf("\033[1;31m"); printf("return KO\n");
