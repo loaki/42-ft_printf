@@ -6,11 +6,24 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:27:46 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/29 23:21:00 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:38:46 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	ft_puts(t_struct *tab, char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+		tab->len++;
+	}
+}
 
 static int	ft_strcmp(char *s1, char *s2)
 {
@@ -58,7 +71,7 @@ static char	*ft_strhexa(t_struct *tab)
 
 	p = (long int)va_arg(tab->arg, unsigned long int);
 	if (!p)
-		return ("0x0");
+		return ((tab->flag[2] == '.' ? "0x" : "0x0"));
 	base = "0123456789abcdef";
 	i = 11;
 	str[12] = 0;
@@ -76,7 +89,7 @@ int			ft_display_p(t_struct *tab)
 	char *str;
 
 	str = ft_strhexa(tab);
-	if (tab->flag[1] == '0' || tab->flag[2] == '.')
+	if (tab->flag[1] == '0')
 		return (-1);
 	while (tab->width > ft_strlen(str) && tab->flag[0] != '-')
 	{
@@ -84,7 +97,7 @@ int			ft_display_p(t_struct *tab)
 		tab->width--;
 		tab->len++;
 	}
-	ft_putstr(tab, str);
+	ft_puts(tab, str);
 	if (tab->width < 0)
 		tab->width *= -1;
 	while (tab->width > ft_strlen(str))
@@ -93,7 +106,7 @@ int			ft_display_p(t_struct *tab)
 		tab->width--;
 		tab->len++;
 	}
-	if (ft_strcmp(str, "0x0"))
+	if (ft_strcmp(str, "0x") && ft_strcmp(str, "0x0"))
 		free(str);
 	return (0);
 }

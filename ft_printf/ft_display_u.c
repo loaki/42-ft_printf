@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 13:31:15 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/01 16:28:40 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:11:24 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void		ft_putnbr(t_struct *tab, char *str, int i)
 {
+	if (str[i] == '0' && tab->precision == 0)
+		return ;
 	while (str[i])
 	{
 		write(1, &str[i], 1);
@@ -44,6 +46,13 @@ static void		ft_width(t_struct *tab, char *str)
 {
 	int i;
 
+	if (tab->precision == 0 && str[ft_strlen(str)] == 0)
+	{
+		if (tab->width < 0)
+			tab->width--;
+		else if (tab->width != 0)
+			tab->width++;
+	}
 	i = tab->width;
 	if (tab->flag[0] == '-')
 	{

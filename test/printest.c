@@ -132,6 +132,9 @@ int main()
 	ft_test("%-9c", c, 'c', numtest, success);
 	ft_test("%9c", c, 'c', numtest, success);
 	ft_test("%9s", str, 's', numtest, success);
+	ft_test("%9.3s", str, 's', numtest, success);
+	ft_test("%3.9s", str, 's', numtest, success);
+	ft_test("%2.3s", str, 's', numtest, success);
 	ft_test("%-9s", str, 's', numtest, success);
 	ft_test("%.9s", str, 's', numtest, success);
 	ft_test("%9s", str2, 's', numtest, success);
@@ -161,6 +164,9 @@ int main()
 	ft_test("%030.40i", i4, 'i', numtest, success);
 	ft_test("%0-2.50u", i, 'i', numtest, success);
 	ft_test("%0-2.50u", i2, 'i', numtest, success);
+	ft_test("%0-2.0u", i2, 'i', numtest, success);
+	ft_test("%.0u", i2, 'i', numtest, success);
+	ft_test("%2.0u", i2, 'i', numtest, success);
 	ft_test("%0-2.50u", i3, 'i', numtest, success);
 	ft_test("%0-2.50u", i4, 'i', numtest, success);
 	ft_test("%0-2.5u", i, 'i', numtest, success);
