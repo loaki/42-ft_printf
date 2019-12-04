@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 14:27:46 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/02 18:38:46 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/04 18:27:56 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ static int	ft_strcmp(char *s1, char *s2)
 static char	*ft_strjoin(char *str)
 {
 	int		i;
+	int		j;
 	char	*ret;
 
 	i = 0;
-	if (!(ret = (char *)malloc(15)))
+	j = 2;
+	if (!(ret = (char *)malloc(40)))
 		return (NULL);
 	while (str[i] == '0')
 		i++;
@@ -55,7 +57,7 @@ static char	*ft_strjoin(char *str)
 	ret[1] = 'x';
 	while (str[i])
 	{
-		ret[i + 2] = str[i];
+		ret[j++] = str[i];
 		i++;
 	}
 	ret[i + 2] = 0;
