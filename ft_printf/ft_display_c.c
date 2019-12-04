@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 17:52:10 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/11/27 17:08:40 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:54:57 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		ft_display_c(t_struct *tab)
 {
 	char c;
 
-	c = (char)va_arg(tab->arg, unsigned long int);
-	if (tab->precision != -1 || tab->flag[1] == '0')
+	c = (char)va_arg(tab->arg, long int);
+	if (tab->precision > 0 || tab->flag[1] == '0')
 		return (-1);
 	while (tab->width > 1 && tab->flag[0] != '-')
 	{
