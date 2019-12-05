@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:43:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/05 18:58:06 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/05 19:11:04 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int				ft_display_i(t_struct *tab)
 	nb = (int)va_arg(tab->arg, unsigned long int);
 	if (i < ft_nblen(nb))
 		i = ft_nblen(nb);
-	if (nb < 0 && i >= ft_nblen(nb))
+	if (nb < 0 && tab->precision >= ft_nblen(nb))
 		i++;
 	if (!(str = malloc(i + 1)))
 		return (-1);
