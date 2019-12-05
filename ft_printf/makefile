@@ -6,7 +6,7 @@
 #    By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/01 16:42:43 by jfeuilla          #+#    #+#              #
-#    Updated: 2019/12/01 16:47:06 by jfeuilla         ###   ########.fr        #
+#    Updated: 2019/12/05 17:05:23 by jfeuilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS		= -Wall -Werror -Wextra -I. -c
 FILES		= ft_bzero.c \
 				ft_display_c.c \
 				ft_display_i.c \
+				ft_display_n.c \
 				ft_display_p.c \
 				ft_display_pc.c \
 				ft_display_s.c \
@@ -61,5 +62,7 @@ fclean:		clean
 			make fclean -C $(DIR_LIBFT)
 
 re:			fclean all
+
+bonus:		$(NAME)
 
 .PHONY:		clean fclean all re

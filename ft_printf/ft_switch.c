@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 17:25:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/02 12:36:13 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/05 17:15:22 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int		ft_switch(t_struct *tab)
 		return (ft_display_x(tab));
 	if (tab->format[tab->i] == '%')
 		return (ft_display_pc(tab));
+	if (tab->format[tab->i] == 'n')
+		return (ft_display_n(tab));
 	return (-1);
 }

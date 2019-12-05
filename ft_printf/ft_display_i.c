@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:43:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/04 18:44:21 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/05 16:46:29 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		ft_width(t_struct *tab, char *str)
 {
 	int i;
 
-	if (tab->precision == 0 && str[ft_strlen(str)] == 0)
+	if (tab->precision == 0 && str[0] == '0' && str[1] == 0)
 	{
 		if (tab->width < 0)
 			tab->width--;

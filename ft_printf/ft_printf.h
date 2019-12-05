@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 09:39:51 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/02 12:35:40 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/05 17:04:30 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int				ft_display_i(t_struct *tab);
 int				ft_display_u(t_struct *tab);
 int				ft_display_x(t_struct *tab);
 int				ft_display_pc(t_struct *tab);
+int				ft_display_n(t_struct *tab);
 
 #endif
