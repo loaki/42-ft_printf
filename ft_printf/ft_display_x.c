@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/06 13:57:27 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/06 14:03:16 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		ft_width(t_struct *tab, char *str)
 		ft_putnbr(tab, str, 0);
 }
 
-static void		ft_precision(t_struct *tab, char *str, int s)
+static char		*ft_precision(t_struct *tab, char *str, int s)
 {
 	int		i;
 	int		hexlen;
