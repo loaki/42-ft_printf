@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/04 19:20:19 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/06 13:57:27 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,24 @@ static void		ft_width(t_struct *tab, char *str)
 
 static void		ft_precision(t_struct *tab, char *str, int s)
 {
-	int i;
-	int hexlen;
-	int preci;
+	int		i;
+	int		hexlen;
+	int		preci;
+	char	*str2;
 
+	i = 0;
 	hexlen = 8 - s;
 	preci = (tab->precision < hexlen ? hexlen : tab->precision);
-	preci = (hexlen == 0 && tab->precision != 0 ? 1 : preci);
-	i = 0;
-	while (i <= (preci))
+	if (!(str2 = malloc(preci + 1)))
+		return (NULL);
+	ft_bzero(str2, preci + 1);
+	while (i <= preci)
 	{
-		str[i] = str[8 - (preci - i)];
+		str2[preci - hexlen + i] = str[i];
 		i++;
 	}
-	str[i] = 0;
+	free(str);
+	return (str2);
 }
 
 int				ft_display_x(t_struct *tab)
@@ -113,7 +117,8 @@ int				ft_display_x(t_struct *tab)
 		nb /= 16;
 		i--;
 	}
-	ft_precision(tab, str, i + 1);
+	if (!(str = ft_precision(tab, str, i + 1)))
+		return (-1);
 	ft_width(tab, str);
 	free(str);
 	return (0);
