@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/06 15:56:30 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/06 16:22:30 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void		ft_truc(t_struct *tab, char *str)
 	int preci;
 
 	i = 0;
-	len = (tab->precision > 0 && str[0] == '0' ? tab->precision :
+	len = (tab->precision == 0 && str[0] == '0' ? 1 :
 	ft_strlen(str));
 	preci = (tab->precision > ft_strlen(str) ? tab->precision -
 	ft_strlen(str) : 0);
@@ -62,7 +62,7 @@ static void		ft_width(t_struct *tab, char *str)
 	int preci;
 
 	i = tab->width;
-	len = (tab->precision > 0 && str[0] == '0' ? tab->precision :
+	len = (tab->precision == 0 && str[0] == '0' ? 1 :
 	ft_strlen(str));
 	preci = (tab->precision > ft_strlen(str) ? tab->precision -
 	ft_strlen(str) : 0);
@@ -71,7 +71,7 @@ static void		ft_width(t_struct *tab, char *str)
 	{
 		ft_putnbr(tab, str, 0);
 		tab->width = (tab->width < 0 ? tab->width * -1 : tab->width);
-		while (tab->width > (len))
+		while (tab->width > (len + preci))
 		{
 			write(1, " ", 1);
 			len++;
