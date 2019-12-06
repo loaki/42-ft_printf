@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/06 15:19:41 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:56:30 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void		ft_truc(t_struct *tab, char *str)
 	ft_strlen(str));
 	preci = (tab->precision > ft_strlen(str) ? tab->precision -
 	ft_strlen(str) : 0);
+	preci = (tab->precision == 0 && str[0] == '0' ? preci - 1 : preci);
 	while (tab->width > (len + preci))
 	{
 		if (tab->flag[1] == '0' && (tab->width < tab->precision ||
@@ -65,13 +66,15 @@ static void		ft_width(t_struct *tab, char *str)
 	ft_strlen(str));
 	preci = (tab->precision > ft_strlen(str) ? tab->precision -
 	ft_strlen(str) : 0);
-	if (tab->flag[0] == '-')
+	preci = (tab->precision == 0 && str[0] == '0' ? preci - 1 : preci);
+	if (tab->flag[0] == '-' || tab->width < 0)
 	{
 		ft_putnbr(tab, str, 0);
-		while (i > (len + preci))
+		tab->width = (tab->width < 0 ? tab->width * -1 : tab->width);
+		while (tab->width > (len))
 		{
 			write(1, " ", 1);
-			i--;
+			len++;
 			tab->len++;
 		}
 	}
