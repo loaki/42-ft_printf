@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/06 14:30:55 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:19:41 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ static void		ft_truc(t_struct *tab, char *str)
 {
 	int i;
 	int len;
+	int preci;
 
 	i = 0;
 	len = (tab->precision > 0 && str[0] == '0' ? tab->precision :
 	ft_strlen(str));
-	while (tab->width > len)
+	preci = (tab->precision > ft_strlen(str) ? tab->precision -
+	ft_strlen(str) : 0);
+	while (tab->width > (len + preci))
 	{
 		if (tab->flag[1] == '0' && (tab->width < tab->precision ||
 			tab->flag[2] != '.'))
@@ -55,21 +58,24 @@ static void		ft_width(t_struct *tab, char *str)
 {
 	int i;
 	int len;
+	int preci;
 
 	i = tab->width;
 	len = (tab->precision > 0 && str[0] == '0' ? tab->precision :
 	ft_strlen(str));
+	preci = (tab->precision > ft_strlen(str) ? tab->precision -
+	ft_strlen(str) : 0);
 	if (tab->flag[0] == '-')
 	{
 		ft_putnbr(tab, str, 0);
-		while (i > len)
+		while (i > (len + preci))
 		{
 			write(1, " ", 1);
 			i--;
 			tab->len++;
 		}
 	}
-	else if (tab->width > len)
+	else if (tab->width > (len + preci))
 		ft_truc(tab, str);
 	else
 		ft_putnbr(tab, str, 0);
