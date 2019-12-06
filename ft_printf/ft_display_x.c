@@ -6,7 +6,7 @@
 /*   By: jfeuilla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 22:21:52 by jfeuilla          #+#    #+#             */
-/*   Updated: 2019/12/06 14:03:16 by jfeuilla         ###   ########.fr       */
+/*   Updated: 2019/12/06 14:30:55 by jfeuilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,18 @@ static void		ft_width(t_struct *tab, char *str)
 		ft_putnbr(tab, str, 0);
 }
 
-static char		*ft_precision(t_struct *tab, char *str, int s)
+static void		ft_precision(char *str, int s)
 {
 	int		i;
-	int		hexlen;
-	int		preci;
-	char	*str2;
 
 	i = 0;
-	hexlen = 8 - s;
-	preci = (tab->precision < hexlen ? hexlen : tab->precision);
-	if (!(str2 = malloc(preci + 1)))
-		return (NULL);
-	ft_bzero(str2, preci + 1);
-	while (i <= preci)
+	while (str[s])
 	{
-		str2[preci - hexlen + i] = str[i];
+		str[i] = str[s];
 		i++;
+		s++;
 	}
-	free(str);
-	return (str2);
+	str[i] = 0;
 }
 
 int				ft_display_x(t_struct *tab)
@@ -107,18 +99,19 @@ int				ft_display_x(t_struct *tab)
 	base = (tab->format[tab->i] == 'x' ? "0123456789abcdef"
 	: "0123456789ABCDEF");
 	nb = (unsigned int)va_arg(tab->arg, unsigned long int);
-	if (!(str = malloc(9)))
+	if (!(str = malloc(1024)))
 		return (-1);
-	ft_bzero(str, 8);
-	i = 7;
+	ft_bzero(str, 1023);
+	i = 1022;
+	if (nb == 0)
+		i--;
 	while (nb != 0 || (nb / 16) > 0)
 	{
 		str[i] = (nb > 16 ? base[nb % 16] : base[nb]);
 		nb /= 16;
 		i--;
 	}
-	if (!(str = ft_precision(tab, str, i + 1)))
-		return (-1);
+	ft_precision(str, i + 1);
 	ft_width(tab, str);
 	free(str);
 	return (0);
